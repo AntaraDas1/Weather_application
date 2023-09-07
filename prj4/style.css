@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.box{
+    background-color: #5faee3;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.information{
+    height: 200px;
+    margin-top: 7rem;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* padding: 30px; */
+}
+.information h2 , p , h1 , h3{
+    padding: 10px;
+    /* background-color: #5faee3; */
+    z-index: 1005;
+}
+.information h3{
+    font-size: 1rem;
+}
+.wave-one {
+    position: absolute;
+    width: 450%;
+    height: 300%;
+    left: -150%;
+    top: 45%;
+    background-color: rgba(228, 247, 253, 0.4);
+    border-radius: 45%;
+    animation: rotate 10s linear infinite;
+    z-index: 999;
+  }
+  
+  
+  .wave-two {
+    position: absolute;
+    width: 450%;
+    height: 300%;
+    left: -150%;
+    top: 50%;
+    background-color: rgba(36, 143, 204, 0.4);
+    border-radius: 43%;
+    animation: rotate 7s linear infinite;
+    z-index: 998;
+  }
+  
+  .wave-three {
+    position: absolute;
+    width: 450%;
+    height: 300%;
+    left: -150%;
+    top: 55%;
+    background-color: rgba(61, 206, 239, 0.4);
+    border-radius: 40%;
+    animation: rotate 5s linear infinite;
+    z-index: 900;
+  }
+  @keyframes rotate {
+    100% { transform: rotate(360deg);}
+  }
+#fas{
+    font-size: 3rem;
+    animation: animate 3s linear infinite alternate;
+  }
+  @keyframes animate {
+    from{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1.3);
+    }
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.box{
+    background-color: #5faee3;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.information{
+    height: 200px;
+    margin-top: 7rem;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* padding: 30px; */
+}
+.information h2 , p , h1 , h3{
+    padding: 10px;
+    /* background-color: #5faee3; */
+    z-index: 1005;
+}
+.information h3{
+    font-size: 1rem;
+}
+.wave-one {
+    position: absolute;
+    width: 450%;
+    height: 300%;
+    left: -150%;
+    top: 45%;
+    background-color: rgba(228, 247, 253, 0.4);
+    border-radius: 45%;
+    animation: rotate 10s linear infinite;
+    z-index: 999;
+  }
+  
+  
+  .wave-two {
+    position: absolute;
+    width: 450%;
+    height: 300%;
+    left: -150%;
+    top: 50%;
+    background-color: rgba(36, 143, 204, 0.4);
+    border-radius: 43%;
+    animation: rotate 7s linear infinite;
+    z-index: 998;
+  }
+  
+  .wave-three {
+    position: absolute;
+    width: 450%;
+    height: 300%;
+    left: -150%;
+    top: 55%;
+    background-color: rgba(61, 206, 239, 0.4);
+    border-radius: 40%;
+    animation: rotate 5s linear infinite;
+    z-index: 900;
+  }
+  @keyframes rotate {
+    100% { transform: rotate(360deg);}
+  }
+#fas{
+    font-size: 3rem;
+    animation: animate 3s linear infinite alternate;
+  }
+  @keyframes animate {
+    from{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1.3);
+    }
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="wave-one"></div>
+      <div class="wave-two"></div>
+      <div class="wave-three"></div>
+
+      <div id="weathercon">
+        <i class="fa fa-solid fa-sun" id="fas" style="color: #f1f50a"></i>
+      </div>
+      <div class="information">
+        <h2 class="location">
+          <i class="fa fa-solid fa fa-street-view"></i>{%location%} , {%country%}
+        </h2>
+        <p id="date">WED | OCT 23 | 10:49AM</p>
+        <h1 class="temp">{%tempval%}</h1>
+        <h3 class="tempmin_max">MIN {%tempmin%} C | MAX {%tempmax%} C</h3>
+      </div>
+    </div>
+
+    <script>
+          const curDate = document.getElementById("date");
+          let weathercon = document.getElementById("weathercon");
+
+          const tempStatus = "clouds";
+
+          const getCurrentDay = () =>{
+            var weekDay = new Array(7);
+            weekDay[0] = "Sunday";
+            weekDay[1] = "Monday";
+            weekDay[2] = "Tuesday";
+            weekDay[3] = "Wednesday";
+            weekDay[4] = "Thursday";
+            weekDay[5] = "Friday";
+            weekDay[6] = "Saturday";
+            let currenttime = new Date();
+            console.log(weekDay[currenttime.getDay()]);
+            let Day = (weekDay[currenttime.getDay()]);
+            return Day;
+          };
+          const getCurrentTime = () =>{
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+            let currenttime = new Date();
+            var month = months[currenttime.getMonth()];
+            var day = currenttime.getDate();
+            var year = currenttime.getFullYear();
+            var hours = currenttime.getHours();
+            var minutes = currenttime.getMinutes();
+            var periods = "Am";
+            if(hours>11){
+              periods= "PM";
+              if(hours>12){
+                hours -= 12;
+              }
+            }
+            if(minutes<10){
+              minutes = "0" + minutes;
+            }
+            if(hours===0){
+              hours="0"+hours;
+            }
+            console.log(month + " " + day + "|" + hours + ":" + minutes + " " + periods);
+           let time = " " + month + " " + day + " " +  "|" + " " + hours + ":" + minutes + " " + periods;
+           return time;
+          };
+          curDate.innerHTML = getCurrentDay() + " " + "|" + getCurrentTime();
+          getCurrentTime();
+
+         getCurrentDay()
+    </script>
+  </body>
+</html>
